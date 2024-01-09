@@ -1,0 +1,51 @@
+# ==== My Aliases ====
+alias g 'gvim'
+alias v 'vim'
+alias wvs 'simvision waves.shm &'
+alias gr 'grep --colour -E'
+alias graph 'git log --all --decorate --oneline --graph'
+alias zgr 'zgrep --colour -E '
+alias my_commits 'git log --author="dylanb"'
+alias simv 'simvision'
+alias src 'source'
+alias runmyrc 'source ~/.cshrc.private'
+alias os 'cat /etc/os-release'
+alias c 'clear'
+alias findf 'find ./ -type f -name'
+alias rama 'git branch'
+alias co 'git checkout ${CURR_WORK_BRANCH}'
+alias show_svcfs 'ls ~/simvision_cmd_scripts/${CURR_PROJ}/'
+
+# ==== Project-specific Aliases ====
+alias get_regress_script 'cp /<path_to_script>/get_error_list.py .'
+alias run_summary 'runstat -rerun; python get_error_list.py fails'
+alias get_test_list '~/scripts/get_test_list.py'
+alias co<short_name_for_dev_branch> 'git checkout <name_of_dev_branch>'
+alias get<name_of_repo> 'git clone <URL_to_repo>' 
+alias rname_log '~/scripts/rename_ius_log_file.sh'
+alias <short_name_for_dev_branch>_log 'git log <name_of_dev_branch>'
+alias <short_name_for_dev_branch>_tests 'cd ${PATH_TO_REPO}/tests'
+alias <short_name_for_dev_branch>_rtl 'cd ${PATH_TO_REPO}/rtl'
+alias <short_name_for_dev_branch>_env 'cd ${PATH_TO_REPO}/env'
+alias my_def_env 'cat $MY_ENV_FILE'
+alias my_env '~/scripts/my_env.sh'
+alias <short_name_for_dev_branch>_upd 'git checkout <name_of_dev_branch>; git fetch; git merge origin/<name_of_dev_branch>'
+alias get_<name_of_feature>_svcf 'cp ~/simvision_cmd_scripts/<name_of_feature>_testing.svcf .'
+alias run_regression '<command_to_run_regression>'
+alias show_errs 'zgrep "UVM_ERROR" <name_of_renamed_log_file>'
+
+# ==== Aliases below are more dynamic =====
+# User can update CURR_WORK_ROOT, an environment variable, to be the path to their current working directory.
+# In this way, the aliases are dynamic: if the environment variable changes value, the aliases will take this into account.
+# (1) Run set_work_root
+# (2) Run cp_env_vars
+# (3) Open a new tab (shell) in the same window
+# (4) Run src_env_vars
+alias set_work_root 'setenv CURR_WORK_ROOT ${PWD}' # call this alias when you are in the directory where the mcip repository is cloned
+alias cp_env_vars 'echo "setenv CURR_WORK_ROOT ${PWD}; setenv CURR_CFG ${CURR_CFG_TMP}" > ~/work_env_vars.sh'
+alias src_env_vars 'source ~/work_env_vars.sh'
+alias <name_of_repo>_tests 'cd ${CURR_WORK_ROOT}/tests'
+alias <name_of_repo>_env 'cd ${CURR_WORK_ROOT}/env'
+alias <name_of_repo>_build 'cd ${CURR_WORK_ROOT}/build'
+alias <name_of_repo>_common 'cd ${CURR_WORK_ROOT}/common'
+alias <name_of_repo>_rtl 'cd ${CURR_WORK_ROOT}/rtl'
