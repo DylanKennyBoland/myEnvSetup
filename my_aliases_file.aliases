@@ -42,7 +42,8 @@ alias show_errs 'zgrep "UVM_ERROR" <name_of_renamed_log_file>'
 # (3) Open a new tab (shell) in the same window
 # (4) Run src_env_vars
 alias set_work_root 'setenv CURR_WORK_ROOT ${PWD}' # call this alias when you are in the directory where the mcip repository is cloned
-alias cp_env_vars 'echo "setenv CURR_WORK_ROOT ${PWD}; setenv CURR_CFG ${CURR_CFG_TMP}" > ~/work_env_vars.sh'
+alias set_curr_branch 'setenv CURR_WORK_BRANCH' # call this alias followed by the name of the branch you intend to start working on
+alias cp_env_vars 'echo "setenv CURR_WORK_ROOT ${CURR_WORK_ROOT}; setenv CURR_CFG ${CURR_CFG_TMP}; setenv CURR_WORK_BRANCH ${CURR_WORK_BRANCH}" > ~/work_env_vars.sh'
 alias src_env_vars 'source ~/work_env_vars.sh'
 alias <name_of_repo>_tests 'cd ${CURR_WORK_ROOT}/tests'
 alias <name_of_repo>_env 'cd ${CURR_WORK_ROOT}/env'
