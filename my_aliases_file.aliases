@@ -1,7 +1,9 @@
 # ==== My Aliases ====
 alias g 'gvim'
 alias v 'vim'
+alias apps 'ls <path_to_apps_or_programs>'
 alias wvs 'simvision waves.shm &'
+alias zgr 'zgrep --colour -E '
 alias gr 'grep --colour -E'
 alias graph 'git log --all --decorate --oneline --graph'
 alias zgr 'zgrep --colour -E '
@@ -11,9 +13,15 @@ alias src 'source'
 alias runmyrc 'source ~/.cshrc.private'
 alias os 'cat /etc/os-release'
 alias c 'clear'
+alias my_def_env 'cat $MY_ENV_FILE'
+alias my_env '~/scripts/my_env.sh'
 alias findf 'find ./ -type f -name'
+alias rm_backup_files 'find . -type f -name "*~" -delete'
+alias my_scratch_area 'cd <path_to_my_scratch_area>'
+alias clear_scratch_area 'rm -rf <path_to_my_scratch_area>'
 alias rama 'git branch'
-alias co 'git checkout ${CURR_WORK_BRANCH}'
+alias co 'git checkout ${CURR_BRANCH}'
+alias upd 'git merge origin/${CURR_BRANCH}'
 alias show_svcfs 'ls ~/simvision_cmd_scripts/${CURR_PROJ}/'
 
 # ==== Project-specific Aliases ====
@@ -41,10 +49,13 @@ alias show_errs 'zgrep "UVM_ERROR" <name_of_renamed_log_file>'
 # (2) Run cp_env_vars
 # (3) Open a new tab (shell) in the same window
 # (4) Run src_env_vars
-alias set_work_root 'setenv CURR_WORK_ROOT ${PWD}' # call this alias when you are in the directory where the mcip repository is cloned
-alias set_curr_branch 'setenv CURR_WORK_BRANCH' # call this alias followed by the name of the branch you intend to start working on
-alias cp_env_vars 'echo "setenv CURR_WORK_ROOT ${CURR_WORK_ROOT}; setenv CURR_CFG ${CURR_CFG_TMP}; setenv CURR_WORK_BRANCH ${CURR_WORK_BRANCH}" > ~/work_env_vars.sh'
+alias set_work_root 'setenv CURR_WORK_ROOT ${PWD}' # call this alias when you are in the directory where the repository is cloned
+alias set_curr_branch 'setenv CURR_BRANCH' # call this alias *followed by the new branch name* when you intend to start working on a new branch
+alias set_curr_cfg 'setenv CURR_CFG' # call this alias *followed by the new configuration* you intend to work with
+alias cp_env_vars 'echo "setenv CURR_WORK_ROOT ${CURR_WORK_ROOT}; setenv CURR_CFG ${CURR_CFG}; setenv CURR_BRANCH ${CURR_BRANCH}" > ~/work_env_vars.sh'
 alias src_env_vars 'source ~/work_env_vars.sh'
+alias chk_define 'cat ${CURR_WORK_ROOT}/<repo_name>/<path_to_defines_file> | grep'
+alias sig_info 'cat ${CURR_WORK_ROOT}/<repo_name>/<path_to_RTL>/* | grep -w'
 alias <name_of_repo>_tests 'cd ${CURR_WORK_ROOT}/tests'
 alias <name_of_repo>_env 'cd ${CURR_WORK_ROOT}/env'
 alias <name_of_repo>_build 'cd ${CURR_WORK_ROOT}/build'
